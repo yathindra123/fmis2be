@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.4.3.final using JasperReports Library version 6.4.3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="FMISReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b4c69d7d-274e-4c89-8a25-ef0fecf4dd45">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (2)"/>
+	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="fmis2db" uuid="d6cbc40f-1920-4517-b846-db6c9ae5e8a0">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (3)"/>
+		<queryString language="MongoDbQuery">
+			<![CDATA[{
+    'collectionName' : 'item'
+}]]>
+		</queryString>
+		<field name="barcode" class="java.lang.String"/>
+		<field name="cost" class="java.lang.Integer"/>
+		<field name="createdAt" class="java.util.Date"/>
+		<field name="description" class="java.lang.String"/>
+		<group name="createdAt">
+			<groupExpression><![CDATA[$F{createdAt}]]></groupExpression>
+		</group>
+	</subDataset>
+	<queryString language="MongoDbQuery">
+		<![CDATA[{
+    'collectionName' : 'building',
+    'findFields' : {
+        'roomId':1,
+  'building':1,
+  'floor':1,
+  'spaceType':1,
+  'spaceCode':1,
+  'department':1,
+  'occupant':1,
+  'gfa':1,
+  'ufa':1,
+  
+    }
+}]]>
+	</queryString>
+	<field name="_id" class="org.bson.types.ObjectId"/>
+	<field name="building" class="java.lang.String"/>
+	<field name="department" class="java.lang.String"/>
+	<field name="floor" class="java.lang.String"/>
+	<field name="gfa" class="java.lang.String"/>
+	<field name="occupant" class="java.lang.String"/>
+	<field name="roomId" class="java.lang.String"/>
+	<field name="spaceCode" class="java.lang.String"/>
+	<field name="spaceType" class="java.lang.String"/>
+	<field name="ufa" class="java.lang.String"/>
+	<group name="_id">
+		<groupExpression><![CDATA[$F{_id}]]></groupExpression>
+	</group>
+	<group name="building">
+		<groupExpression><![CDATA[$F{building}]]></groupExpression>
+	</group>
+	<group name="department">
+		<groupExpression><![CDATA[$F{department}]]></groupExpression>
+	</group>
+	<group name="floor">
+		<groupExpression><![CDATA[$F{floor}]]></groupExpression>
+	</group>
+	<group name="gfa">
+		<groupExpression><![CDATA[$F{gfa}]]></groupExpression>
+	</group>
+	<group name="occupant">
+		<groupExpression><![CDATA[$F{occupant}]]></groupExpression>
+	</group>
+	<group name="roomId">
+		<groupExpression><![CDATA[$F{roomId}]]></groupExpression>
+	</group>
+	<group name="spaceCode">
+		<groupExpression><![CDATA[$F{spaceCode}]]></groupExpression>
+	</group>
+	<group name="spaceType">
+		<groupExpression><![CDATA[$F{spaceType}]]></groupExpression>
+	</group>
+	<group name="ufa">
+		<groupExpression><![CDATA[$F{ufa}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="350" y="0" width="100" height="21" uuid="1c5b0cff-bf34-48d9-b799-d44da5263014"/>
+				<text><![CDATA[Report Date:]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="470" y="0" width="100" height="25" uuid="30e98335-1d4b-4d42-ad3a-c07edfaceca9"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-20" y="30" width="60" height="20" uuid="14546bc3-14b6-4a30-bf64-c53286906251"/>
+				<text><![CDATA[Campus]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="30" width="100" height="30" uuid="da4583c0-db4a-4f19-9e44-a6feb04ad224"/>
+				<text><![CDATA[Static Text]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="260" splitType="Stretch">
+			<componentElement>
+				<reportElement x="-20" y="0" width="601" height="260" uuid="6479fc44-4f69-41f4-98d7-8b6ad594cfbf">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+					<property name="net.sf.jasperreports.export.headertoolbar.table.name" value=""/>
+					<property name="com.jaspersoft.studio.components.autoresize.proportional" value="true"/>
+					<property name="com.jaspersoft.studio.components.autoresize.next" value="true"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="fmis2db" uuid="d6aa6892-f6fa-43a3-ae51-bf90091f84d8">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="151" uuid="019221fc-4e06-400f-9e84-9ec455c32aeb">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+						<jr:tableFooter style="Table_TH" height="30"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="151" height="30" uuid="cee751e4-aa90-482a-9349-0ca7f0e826d5"/>
+								<text><![CDATA[barcode]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="Table_CH" height="30"/>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="151" height="30" uuid="5d90fdba-18be-4d54-9497-6ed9cfa17b3c"/>
+								<textFieldExpression><![CDATA[$F{barcode}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="150" uuid="15926468-2dd4-41bb-8b28-ba4160997153">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+						<jr:tableFooter style="Table_TH" height="30"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="150" height="30" uuid="325f68a1-cfd9-49eb-a67e-9b89b9cb8760"/>
+								<text><![CDATA[cost]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="Table_CH" height="30"/>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="150" height="30" uuid="e3a5e131-f471-41e9-acbd-961e75ec8544"/>
+								<textFieldExpression><![CDATA[$F{cost}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="150" uuid="db83a5f4-cb06-4acf-a7f8-6800c6be0d03">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<jr:tableFooter style="Table_TH" height="30"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="150" height="30" uuid="ba9a6b51-9bdc-4114-bebd-176382c53ad8"/>
+								<text><![CDATA[createdAt]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="Table_CH" height="30"/>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="150" height="30" uuid="ae8ba3e5-6462-4730-bb2d-c23bf15f0493"/>
+								<textFieldExpression><![CDATA[$F{createdAt}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="150" uuid="aae27ff4-d72f-4e3f-b61a-704e157e6b17">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
+						<jr:tableFooter style="Table_TH" height="30"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="150" height="30" uuid="686ffb8e-9a62-4ac2-8793-74daefc1ce0a"/>
+								<text><![CDATA[description]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="Table_CH" height="30"/>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="150" height="30" uuid="d4aaeb4d-cc0e-478b-864b-5f6270ec6150"/>
+								<textFieldExpression><![CDATA[$F{description}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="91" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
